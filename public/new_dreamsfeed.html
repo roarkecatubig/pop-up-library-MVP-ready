@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Suite Dreams</title>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+
+  <body>
+    <section class="hero is-primary is-medium" id="hero-photo-one">
+    <div class="hero-head">
+        <div class="columns is-desktop">
+            <div class="column">
+                <nav class="navbar" role="navigation" aria-label="main navigation">
+                    <div class="navbar-brand">
+                    <a class="navbar-item" href="https://bulma.io">
+                        <img src="./photos/logo_2_white.png" alt="Suite Dreams Logo" width="112" height="28">
+                    </a>
+                    </div>
+                    <div class="navbar-menu">
+                        <div class="navbar-end">
+                            <a class="button is-primary is-inverted is-outlined" href="/logout">Log Out</a>
+                            <!-- <a id="signin" class="button is-link is-outlined" data-social-network="Google" data-social-action="google" data-social-target="http://localhost:4000" target="" href="/logout">
+                                <span class="icon">
+                                <i class="fab fa-google"></i>
+                                </span>
+                                <span>
+                                Log Out
+                            </span>
+                            </a> -->
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="columns is-desktop">
+            <h1 class="title" id="welcome_message"></h1>
+        </div>
+        <div class="columns is-desktop">
+            <div class="column">
+                <div class="tabs">
+                    <ul>
+                        <li class="is-active"><a href="/my-dreams">My Dreams</a></li>
+                        <li><a href="/social-feed" id="active-tab">Social Feed</a></li>
+                        <li><a href="/insights">Insights</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="hero-body" id="h_body">
+        <div class="columns is-desktop is-centered" id="selector">
+          <a class="button is-info is-centered" href="/new-dream">New Dream</a>
+        </div>
+        <div id="dream-container">
+            <!-- <div class="columns is-desktop">
+                <div class="column">
+                    <div class="card">
+                        <header class="card-header">
+                            <p class="card-header-title has-text-left">Title</p>
+                            <p class="card-header-title has-text-right">Timestamp</p>
+                        </header>
+                        <header class="card-header">
+                            <p class="card-header-title">Sentiment</p>
+                            <p class="card-header-title">Sentiment Confidence</p>
+                            <p class="card-header-title">Mood</p>
+                            <p class="card-header-title">Privacy</p>
+                        </header>
+                        <div class="card-content">
+                            <div class="content">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+                            <br>
+                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                            </div>
+                        </div>
+                        <footer class="card-footer">
+                            <a class="card-footer-item">Edit</a>
+                            <a class="card-footer-item">Delete</a>
+                        </footer>
+                    </div>
+                </div>
+            </div> -->
+    </div>
+
+    </div>
+    <div class="hero-foot">
+    </div>
+</section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <script src="js/new_dreamsfeed.js" type="text/javascript"></script>
+        
+  </body>
+</html>

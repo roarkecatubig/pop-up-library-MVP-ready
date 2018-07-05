@@ -1,0 +1,169 @@
+#hero-photo-one {
+    background-image: url("/photos/hero_photo_one.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.navbar {
+    background-color: black;
+}
+
+#navbar_black {
+    background-color: rgb(13,27,68);
+}
+
+#hero-photo-two {
+    background-image: url("/photos/hero_image_four.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+}
+
+#h_body {
+    padding-top: 1%;
+}
+
+#card-body {
+    border: none;
+}
+
+#label-font {
+    color: white;
+}
+
+/* #dream-container {
+    background-color: rgba(0, 0, 0, 0.8);
+} */
+
+.card {
+    background-color: rgba(255, 255, 255, 0.7);
+    color: rgba(0, 0, 0, 1);
+    border-color: teal;
+    border-style: solid;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+    width: 65%;
+}
+
+.card-header {
+    font-weight: bold;
+    text-align: center;
+}
+
+a {
+    color: rgba(0, 128, 128, 0.8);
+}
+
+a:hover {
+    color: white;
+}
+
+/* a.card-header-icon {
+    background-color: rgba(255, 255, 255, 0.8);
+} */
+
+.table {
+    border: none;
+}
+
+.chart-container {
+    text-align: center;
+    height: 40%;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    
+}
+
+h2 {
+    color: white;
+}
+
+body {
+    background-color: black;
+}
+
+#signin {
+    margin: 3%;
+}
+
+a.button:hover {
+    color: black;
+    background-color: white;
+}
+
+.tabs a {
+    border-bottom-color: black;
+    background-color: white;
+    color: black;
+}
+
+
+
+.tabs ul {
+    border-bottom-color: transparent;
+}
+
+#selector {
+    margin-bottom: 3%;
+}
+
+#welcome_message {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Dream card styling */
+
+/* Card header font color and background color */
+.card-header-title {
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Dream card background color and spacing */
+.dream-column {
+    margin-left: 10%;
+    margin-right: 10%;
+    border-color: rgba(255, 255, 255, 1);
+    border-style: solid;
+    margin-bottom: 5%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* Dream title text centered */
+.has-text-centered {
+    justify-content: center;
+    align-items: center;
+}
+
+/* Navigation bar styling */
+
+/* Specific to navbar background and font color */
+li {
+    color: black;
+    background-color: white;
+    
+}
+
+/* Font and background color of active tab */
+#active-tab {
+    background-color: black;
+    color: white;
+}
+
+/* .tabs a:hover {
+    border-bottom-color: black;
+    background-color: black;
+    color: white;
+} */
+
