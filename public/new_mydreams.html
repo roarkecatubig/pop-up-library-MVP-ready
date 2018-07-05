@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Suite Dreams</title>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"> -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+
+  <body>
+    <section class="hero is-primary is-medium" id="hero-photo-one">
+    <div class="hero-head">
+        <div class="columns is-mobile">
+            <div class="column">
+                <nav class="navbar" role="navigation" aria-label="main navigation">
+                    <div class="navbar-brand">
+                    <a class="navbar-item" href="https://bulma.io">
+                        <img src="./photos/logo_2_white.png" alt="Suite Dreams Logo" width="112" height="28">
+                    </a>
+                    </div>
+                    <div class="navbar-menu">
+                        <div class="navbar-end">
+                            <a class="button is-primary is-inverted is-outlined" href="/logout">Log Out</a>
+                            <!-- <a id="signin" class="button is-link is-outlined" data-social-network="Google" data-social-action="google" data-social-target="http://localhost:4000" target="" href="/logout">
+                                <span class="icon">
+                                <i class="fab fa-google"></i>
+                                </span>
+                                <span>
+                                Log Out
+                            </span>
+                            </a> -->
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="columns is-mobile">
+            <h1 class="title" id="welcome_message"></h1>
+        </div>
+        <div class="columns is-mobile">
+            <div class="column">
+                <div class="tabs">
+                    <ul>
+                        <li class="is-active"><a id="active-tab"href="/my-dream">My Dreams</a></li>
+                        <li><a href="/social-feed">Social Feed</a></li>
+                        <li><a href="/insights">Insights</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="hero-body" id="h_body">
+        <div class="columns is-mobile">
+            <div class="user-container">
+                <div class="modal">
+                    <div class="modal-background"></div>
+                    <div class="modal-card">
+                        <header class="modal-card-head">
+                        <p class="modal-card-title">Prompt Username</p>
+                        <button class="delete" aria-label="close"></button>
+                        </header>
+                        <section class="modal-card-body">
+                            <input class="input" id="user_name_input" type="text" placeholder="User name input">
+                            <p class="help is-danger" id="user_help_text"></p>
+                        </section>
+                        <footer class="modal-card-foot">
+                        <button class="button is-success" id="save_user">Save User</button>
+                        <button class="button">Cancel</button>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="columns is-mobile is-centered">
+            <div class="column is-centered">
+                <div class="columns is-centered">
+                    <h1 class="title">What would you like to do today?</h1>
+                </div>
+                <div class="columns is-centered">
+                    <a class="button is-large">Request a Book</a>
+                    <a class="button is-large">Offer a Book</a>
+                    </div>
+                <div class="columns is-centered">
+                    <div class="card">
+                        <header class="card-header">
+                            <p class="card-header-title">
+                            Your Profile
+                            </p>
+                            <a href="#" class="card-header-icon" aria-label="more options">
+                            <span class="icon">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                            </a>
+                        </header>
+                        <div class="card-content">
+                            <div class="content">
+                                <p>Username: <span>"Insert username"</span></p>
+                                <p>Last Book Taken: <span>"Insert last book taken"</span></p>
+                                <p>Last Book Offered: <span>"Insert last book offered"</span></p>
+                                <p>Honor Ranking: <span>"Insert honor ranking"</span></p>
+                                <p>Zip Code Location: <span>"Insert user specified zip code"</span></p>
+                            </div>
+                        </div>
+                        <!-- <footer class="card-footer">
+                            <a href="#" class="card-footer-item">Save</a>
+                            <a href="#" class="card-footer-item">Edit</a>
+                            <a href="#" class="card-footer-item">Delete</a>
+                        </footer> -->
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="columns is-mobile is-centered" id="selector">
+            <div class="select">
+                <select id="privacy">
+                    <option selected value="">All Dreams</option>
+                    <option value="1">Private</option>
+                    <option value="2">Public</option>
+                </select>
+                <a class="button is-info is-centered" href="/new-dream">New Dream</a>
+            </div>
+        </div>
+        <div class="columns is-mobile">
+            <div class="chart-container">
+                <canvas id="myChart" width="400" height="400"></canvas>
+            </div>
+        </div>
+        <div id="dream-container">
+            <!-- <div class="columns is-mobile">
+                <div class="column">
+                    <div class="card">
+                        <header class="card-header">
+                            <p class="card-header-title has-text-left">Title</p>
+                            <p class="card-header-title has-text-right">Timestamp</p>
+                        </header>
+                        <header class="card-header">
+                            <p class="card-header-title">Sentiment</p>
+                            <p class="card-header-title">Sentiment Confidence</p>
+                            <p class="card-header-title">Mood</p>
+                            <p class="card-header-title">Privacy</p>
+                        </header>
+                        <div class="card-content">
+                            <div class="content">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+                            <br>
+                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                            </div>
+                        </div>
+                        <footer class="card-footer">
+                            <a class="card-footer-item">Edit</a>
+                            <a class="card-footer-item">Delete</a>
+                        </footer>
+                    </div>
+                </div>
+            </div> -->
+    </div>
+
+    </div>
+    <div class="hero-foot">
+    </div>
+</section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <script src="js/new_mydreams.js" type="text/javascript"></script>
+        
+  </body>
+</html>
+
+
+
+<!-- <div class="card is-fullwidth">
+        <header class="card-header">
+            <p class="card-header-title">Card #1</p>
+            <a class="card-header-icon card-toggle">
+                <i class="fa fa-angle-down"></i>
+            </a>
+        </header>
+        <div class="card-content is-hidden">
+            <div class="content">
+                Content goes here <small>Small text</small>
+            </div>
+        </div>
+    </div> -->

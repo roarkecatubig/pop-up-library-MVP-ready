@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Suite Dreams</title>
+  <!-- Latest compiled and minified CSS & JS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" media="screen" title="no title">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+
+<body  id="hero-photo-one">
+  <nav class="navbar is-black" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/my-dreams"><img src="/photos/logo_2_white.png" alt="SuiteDreams Logo" width="112" height="28"></a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <a class="navbar-item" href="/new-dream">New Dream</a>
+          <a class="navbar-item" id="my_dreams" href="/my-dreams">My Dreams</a>
+          <a class="navbar-item" href="/social-feed">Social Feed</a>
+    
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <div class="field is-grouped">
+                  <p class="control">
+                      <a class="button is-link is-outlined" data-social-network="Google" data-social-action="google" data-social-target="http://localhost:4000" target="" href="/logout">
+                        <span class="icon">
+                          <i class="fab fa-google"></i>
+                        </span>
+                        <span>
+                          Log Out
+                        </span>
+                      </a>
+                </p>
+              </div>
+            </div>
+          </a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5 offset-md-3">
+        <form id="cms">
+          <div class="form-group">
+            <label for="title" id="label-font">Title:</label>
+            <input type="text" class="form-control" id="title">
+            <br />
+            <label for="body" id="label-font">Body:</label>
+            <textarea class="form-control" rows="10" id="dream_input"></textarea>
+            <div class="form-group">
+              <label for="category" id="label-font">Select Category:</label>
+              <select class="custom-select" id="privacy">
+                <option value="1">Private</option>
+                <option value="0">Public</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="category" id="label-font">Select Category:</label>
+              <select class="custom-select" id="mood">
+                  <option value="Anxious">Anxious</option>                
+                  <option value="Blissful">Blissful</option>
+                  <option value="Confused">Confused</option>
+                  <option value="Erotic">Erotic</option>
+                  <option value="Embarassed">Embarassed</option>
+                  <option value="Euphoria">Euphoria</option>
+                  <option value="Grief">Grief</option>
+                  <option value="Happy">Happy</option>
+                  <option value="Hilarious">Hilarious</option>
+                  <option value="Intense">Intense</option>
+                  <option value="Joy">Joy</option>
+                  <option value="Lonely">Lonely</option>
+                  <option value="Lost">Lost</option>
+                  <option value="Recurring">Recurring</option>
+                  <option value="Sad">Sad</option>
+                  <option value="Scared">Scared</option>
+                  <option value="Stressed">Stressed</option>
+                  <option value="Violent">Violent</option>
+                  <option value="Wild">Wild</option>
+                  <option value="Worried">Worried</option>
+              </select>
+            </div>
+            <br />
+            <button type="submit" class="button is-medium is-link">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Custom Script -->
+  <script src="js/newdream.js" type="text/javascript"></script>
+
+</body>
+
+</html>
