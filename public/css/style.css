@@ -1,9 +1,18 @@
 #hero-photo-one {
-    background-image: url("/photos/hero_photo_one.jpg");
+    background-image: url("/photos/book-pages.jpg");
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
+}
+
+#nav-bar {
+    margin-bottom: 0; 
+}
+
+#nav-tabs {
+    flex-grow: 0;
 
 }
 
@@ -166,4 +175,3 @@ li {
     background-color: black;
     color: white;
 } */
-

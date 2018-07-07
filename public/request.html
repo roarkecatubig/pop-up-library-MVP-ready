@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Suite Dreams</title>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"> -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+
+  <body>
+    <section class="hero is-primary is-medium" id="hero-photo-one">
+    <div class="hero-head">
+        <div class="columns is-mobile">
+            <div class="column">
+                <nav class="navbar" role="navigation" aria-label="main navigation">
+                    <div class="navbar-brand">
+                    <a class="navbar-item" href="https://bulma.io">
+                        <img src="./photos/logo_2_white.png" alt="Suite Dreams Logo" width="112" height="28">
+                    </a>
+                    </div>
+                    <div class="navbar-menu">
+                        <div class="navbar-end">
+                            <a class="button is-primary is-inverted is-outlined" href="/logout">Log Out</a>
+                            <!-- <a id="signin" class="button is-link is-outlined" data-social-network="Google" data-social-action="google" data-social-target="http://localhost:4000" target="" href="/logout">
+                                <span class="icon">
+                                <i class="fab fa-google"></i>
+                                </span>
+                                <span>
+                                Log Out
+                            </span>
+                            </a> -->
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="columns is-mobile">
+            <h1 class="title" id="welcome_message"></h1>
+        </div>
+        <div class="columns is-mobile">
+            <div class="column">
+                <div class="tabs">
+                    <ul>
+                        <li class="is-active"><a id="active-tab"href="/my-dream">Request or Offer a Book</a></li>
+                        <li><a href="/social-feed">Your Profile</a></li>
+                        <li><a href="/insights">Community Library</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="columns is-mobile is-centered">
+        <h1 class="title">Your selected Book Request</h1>
+    </div>
+    <div class="columns is-mobile is-centered">
+        <div class="card">
+            <div class="card-content">
+                <div class="media">
+                <div class="media-left">
+                    <figure class="image is-48x48">
+                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                    </figure>
+                </div>
+                <div class="media-content">
+                    <p class="title is-4">Book Title</p>
+                    <p class="subtitle is-6">Date Published?</p>
+                    
+                </div>
+                </div>
+            
+                <div class="content">
+                Book synopsis. <a>@bulmaio</a>.
+                <a href="#">#css</a> <a href="#">#responsive</a>
+                <p class="subtitle is-6">Author</p>
+                <!-- <br>
+                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="columns is-mobile">
+        <div class="container">
+                <div class="field">
+                        <label class="label">Name</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Text input">
+                        </div>
+                    </div>
+                        <div class="field">
+                        <label class="label">Preferred Drop Location</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input class="input is-success" type="text" placeholder="Text input" value="bulma">
+                            <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                            </span>
+                        </div>
+                        <p class="help is-success">This username is available</p>
+                        </div>
+                        
+                        <div class="field">
+                        <label class="label">Email</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input class="input is-danger" type="email" placeholder="Email input" value="hello@">
+                            <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            </span>
+                        </div>
+                        <p class="help is-danger">This email is invalid</p>
+                        </div>
+                        
+                        <div class="field">
+                        <label class="label">Subject</label>
+                        <div class="control">
+                            <div class="select">
+                            <select>
+                                <option>Select dropdown</option>
+                                <option>With options</option>
+                            </select>
+                            </div>
+                        </div>
+                        </div>
+                        
+                        <div class="field">
+                        <label class="label">Message</label>
+                        <div class="control">
+                            <textarea class="textarea" placeholder="Textarea"></textarea>
+                        </div>
+                        </div>
+                        
+                        <div class="field">
+                        <div class="control">
+                            <label class="checkbox">
+                            <input type="checkbox">
+                            I agree to the <a href="#">terms and conditions</a>
+                            </label>
+                        </div>
+                        </div>
+                        
+                        <div class="field">
+                        <div class="control">
+                            <label class="radio">
+                            <input type="radio" name="question">
+                            Yes
+                            </label>
+                            <label class="radio">
+                            <input type="radio" name="question">
+                            No
+                            </label>
+                        </div>
+                        </div>
+                        
+                        <div class="field is-grouped">
+                        <div class="control">
+                            <button class="button is-link">Submit</button>
+                        </div>
+                        <div class="control">
+                            <button class="button is-text">Cancel</button>
+                        </div>
+                    </div>
+
+        </div>
+
+    </div>
+    <div class="hero-foot">
+    </div>
+</section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <script src="js/disclaimer.js" type="text/javascript"></script>
+        
+  </body>
+</html>
