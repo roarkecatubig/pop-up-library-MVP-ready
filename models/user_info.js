@@ -1,12 +1,12 @@
-module.exports = function(sequelize, DataTypes) {
-    var User = sequelize.define("User", {
+module.exports = function(DataTypes) {
+    var User = DataTypes.define("User", {
     id: {
       autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER
     },
     name: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
           len: [1,18]
@@ -21,23 +21,23 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false,
     },
     password: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false
     },
   zipCode: {
-      type: Sequelize.INTEGER, 
+      type: DataTypes.INTEGER, 
       allowNull: false
     },
   rating: {
-      type: Sequelize.INTEGER, 
+      type: DataTypes.INTEGER, 
       allowNull: false
     },
   createdAt: {
       allowNull: false,
-      type: Sequelize.DATE
+      type: DataTypes.DATE
     },
   last_login: {
-      type: Sequelize.DATE
+      type: DataTypes.DATE
     }
 
     });
