@@ -8,7 +8,7 @@ module.exports = function(app) {
     });
 
     app.get("/disclaimer", function (req, res) {
-        res.sendFile(path.join(__dirname, "../public/2_disclaimer.html"))
+        res.sendFile(path.join(__dirname, "../public/disclaimer.html"))
     });
 
     app.get("/home", function(req, res) {
