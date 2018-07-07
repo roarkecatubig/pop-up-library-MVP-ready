@@ -1,52 +1,18 @@
 $(document).ready(function () {
-
-    function createChart(positive, negative, neutral) {
-    
-      var ctx = $("#myChart");
-      var myChart = new Chart(ctx, {
-        type: 'polarArea',
-        data: {
-            labels: ["Positive", "Negative", "Neutral"],
-            datasets: [{
-                label: '# of Votes',
-                data: [positive, negative, neutral],
-                backgroundColor: [
-                    'rgba(75, 192, 192, 0.5)',
-                    'rgba(255, 99, 132, 0.5)',
-                    'rgba(54, 162, 235, 0.5)'
-                ],
-                borderColor: [
-                  'rgba(75, 192, 192, 1)',
-                  'rgba(255, 99, 132, 1)',
-                  'rgba(54, 162, 235, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-          legend: {
-            labels: {
-              fontColor: "white",
-              fontSize: 20
-            }
-          }
-        }
-    });
-  };
   
-    //dream container that holds all dreams posted.
-    var dreamContainer = $("#dream-container");
-    var chartContainer = $(".chart-container")
+    // //dream container that holds all dreams posted.
+    // var dreamContainer = $("#dream-container");
+    // var chartContainer = $(".chart-container")
     var inputUser = $("#user_name_input");
     var nameHelpText = $("#user_help_text");
     var welcomeMessage = $("#welcome_message");
     var displayedUser;
-    // Points to the dropdown menu for selecting what privacy setting to query 
-    var privacySetting = $("#privacy");
-    //click events for the edit and delete button
-    $(document).on("click", ".button-delete", handleDreamsDelete);
-    $(document).on("click", ".button-edit", handleDreamsEdit);
-    privacySetting.on("change", handlePrivacyChange);
+    // // Points to the dropdown menu for selecting what privacy setting to query 
+    // var privacySetting = $("#privacy");
+    // //click events for the edit and delete button
+    // $(document).on("click", ".button-delete", handleDreamsDelete);
+    // $(document).on("click", ".button-edit", handleDreamsEdit);
+    // privacySetting.on("change", handlePrivacyChange);
     $(".delete").click(function() {
       $(".modal").removeClass("is-active");
    });
@@ -164,7 +130,7 @@ $(document).ready(function () {
           url: "/update-user/" + user_input
         })
           .then(function() {
-            window.location.href = "/my-dreams";
+            window.location.href = "/home";
           });
     }
   

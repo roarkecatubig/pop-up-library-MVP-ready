@@ -6,7 +6,6 @@
     <title>Suite Dreams</title>
     <script src="https://code.jquery.com/jquery.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"> -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
@@ -25,14 +24,6 @@
                     <div class="navbar-menu">
                         <div class="navbar-end">
                             <a class="button is-primary is-inverted is-outlined" href="/logout">Log Out</a>
-                            <!-- <a id="signin" class="button is-link is-outlined" data-social-network="Google" data-social-action="google" data-social-target="http://localhost:4000" target="" href="/logout">
-                                <span class="icon">
-                                <i class="fab fa-google"></i>
-                                </span>
-                                <span>
-                                Log Out
-                            </span>
-                            </a> -->
                         </div>
                     </div>
                 </nav>
@@ -45,9 +36,9 @@
             <div class="column">
                 <div class="tabs">
                     <ul>
-                        <li class="is-active"><a id="active-tab"href="/my-dream">My Dreams</a></li>
-                        <li><a href="/social-feed">Social Feed</a></li>
-                        <li><a href="/insights">Insights</a></li>
+                        <li class="is-active"><a id="active-tab"href="/my-dream">Disclaimer</a></li>
+                        <li><a href="/social-feed">Your Profile</a></li>
+                        <li><a href="/insights">Community Library</a></li>
                     </ul>
                 </div>
             </div>
@@ -76,135 +67,39 @@
                 </div>
             </div>
         </div>
-        <div class="columns is-mobile is-centered">
-            <div class="field">
-                <label class="label">Name</label>
-                <div class="control">
-                    <input class="input" type="text" placeholder="Text input">
-                </div>
-                </div>
-                
-                <div class="field">
-                <label class="label">Username</label>
-                <div class="control has-icons-left has-icons-right">
-                    <input class="input is-success" type="text" placeholder="Text input" value="bulma">
-                    <span class="icon is-small is-left">
-                    <i class="fas fa-user"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                    <i class="fas fa-check"></i>
-                    </span>
-                </div>
-                <p class="help is-success">This username is available</p>
-                </div>
-                
-                <div class="field">
-                <label class="label">Email</label>
-                <div class="control has-icons-left has-icons-right">
-                    <input class="input is-danger" type="email" placeholder="Email input" value="hello@">
-                    <span class="icon is-small is-left">
-                    <i class="fas fa-envelope"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    </span>
-                </div>
-                <p class="help is-danger">This email is invalid</p>
-                </div>
-                
-                <div class="field">
-                <label class="label">Subject</label>
-                <div class="control">
-                    <div class="select">
-                    <select>
-                        <option>Select dropdown</option>
-                        <option>With options</option>
-                    </select>
-                    </div>
-                </div>
-                </div>
-                
-                <div class="field">
-                <label class="label">Message</label>
-                <div class="control">
-                    <textarea class="textarea" placeholder="Textarea"></textarea>
-                </div>
-                </div>
-                
-                <div class="field">
-                <div class="control">
-                    <label class="checkbox">
-                    <input type="checkbox">
-                    I agree to the <a href="#">terms and conditions</a>
-                    </label>
-                </div>
-                </div>
-                
-                <div class="field">
-                <div class="control">
-                    <label class="radio">
-                    <input type="radio" name="question">
-                    Yes
-                    </label>
-                    <label class="radio">
-                    <input type="radio" name="question">
-                    No
-                    </label>
-                </div>
-                </div>
-                
-                <div class="field is-grouped">
-                <div class="control">
-                    <button class="button is-link">Submit</button>
-                </div>
-                <div class="control">
-                    <button class="button is-text">Cancel</button>
-                </div>
-            </div>
-        </div>
-        <div class="columns is-mobile is-centered" id="selector">
-            <div class="select">
-                <select id="privacy">
-                    <option selected value="">All Dreams</option>
-                    <option value="1">Private</option>
-                    <option value="2">Public</option>
-                </select>
-                <a class="button is-info is-centered" href="/new-dream">New Dream</a>
-            </div>
-        </div>
-        <div class="columns is-mobile">
-            <div class="chart-container">
-                <canvas id="myChart" width="400" height="400"></canvas>
-            </div>
-        </div>
-        <div id="dream-container">
-            <!-- <div class="columns is-mobile">
-                <div class="column">
-                    <div class="card">
-                        <header class="card-header">
-                            <p class="card-header-title has-text-left">Title</p>
-                            <p class="card-header-title has-text-right">Timestamp</p>
-                        </header>
-                        <header class="card-header">
-                            <p class="card-header-title">Sentiment</p>
-                            <p class="card-header-title">Sentiment Confidence</p>
-                            <p class="card-header-title">Mood</p>
-                            <p class="card-header-title">Privacy</p>
-                        </header>
-                        <div class="card-content">
-                            <div class="content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                            <br>
-                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+        <div class="container">
+            <h1 class="title has-text-centered">Disclaimer</h1>
+            <p>When using this app and engaging in book exchanges, please be aware of your surroundings and exchange content safely. You agree that your use of this App and exchanging of books is at your own risk, and it is your responsibility to maintain such health, liability, hazard, personal injury, medical, life, and other insurance policies as you deem reasonably necessary for any injuries that you may incur while using the App's Services. You also agree not to use the App to violate any applicable law, rule or regulation (including but not limited to the laws of trespass) and you agree not to encourage or enable any other individual to violate any applicable law, rule, or regulation. Without limiting the foregoing, you agree that in conjunction with your use of the App you will not inflict emotional distress on other people, will not humiliate other people (publicly or otherwise), will not assault or threaten other people, will not enter onto private property without permission, will not impersonate any other person or misrepresent your affiliation, title, or authority, and you will not otherwise engage in any activity that may result in injury, death, property damage, and/or liability of any kind. Further, in the event that you have a dispute with one or more other users of the App, you release the makers of this app (and our officers, directors, agents, subsidiaries, joint ventures and employees) from all claims, demands, and damages (actual and consequential) of every kind and nature, known and unknown, suspected and unsuspected, disclosed and undisclosed, arising out of or in any way connected with such disputes.</p>
+                <div class="container">
+                    <form id="disclaimer_check">
+                        <div class="field">
+                            <div class="columns is-centered">
+                                <div class="control">
+                                    <label class="checkbox">
+                                    <input type="checkbox" id="test">
+                                    I agree to the <a href="#">terms and conditions</a>
+                                    </label>
+                                </div> 
+                            </div>
+    
+                            <div class="field">
+                                <div class="columns is-centered">
+                                        <div class="control">
+                                            <button type ="submit" id="submit" href="/home" class="button is-link">Submit</button>
+                                        </div>
+                                        <div class="control">
+                                            <button href="/home" class="button is-text">Cancel</button>
+                                        </div>
+                                </div>
+    
                             </div>
                         </div>
-                        <footer class="card-footer">
-                            <a class="card-footer-item">Edit</a>
-                            <a class="card-footer-item">Delete</a>
-                        </footer>
-                    </div>
+                    </form>
+
+
                 </div>
-            </div> -->
+        </div>
+        
     </div>
 
     </div>
@@ -213,23 +108,7 @@
 </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
-    <script src="js/new_mydreams.js" type="text/javascript"></script>
+    <script src="js/disclaimer.js" type="text/javascript"></script>
         
   </body>
 </html>
-
-
-
-<!-- <div class="card is-fullwidth">
-        <header class="card-header">
-            <p class="card-header-title">Card #1</p>
-            <a class="card-header-icon card-toggle">
-                <i class="fa fa-angle-down"></i>
-            </a>
-        </header>
-        <div class="card-content is-hidden">
-            <div class="content">
-                Content goes here <small>Small text</small>
-            </div>
-        </div>
-    </div> -->
