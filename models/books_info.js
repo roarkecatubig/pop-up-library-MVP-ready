@@ -1,5 +1,5 @@
-module.exports = function(DataTypes) {
-  var Book = DataTypes.define("Book", {
+module.exports = function(sequelize, DataTypes) {
+  var Book = sequelize.define("Book", {
 
     title: {
       type: DataTypes.STRING,
