@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER
     },
     name: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
           len: [1,18]
@@ -18,26 +18,26 @@ module.exports = function(sequelize, DataTypes) {
     },
     email: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
     password: {
-      type: Sequelize.STRING,
-      allowNull: false
+      type: DataTypes.STRING,
+      allowNull: true
     },
   zipCode: {
-      type: Sequelize.INTEGER, 
-      allowNull: false
+      type: DataTypes.INTEGER, 
+      allowNull: true
     },
   rating: {
-      type: Sequelize.INTEGER, 
+      type: DataTypes.INTEGER, 
       allowNull: false
     },
   createdAt: {
       allowNull: false,
-      type: Sequelize.DATE
+      type: DataTypes.DATE
     },
   last_login: {
-      type: Sequelize.DATE
+      type: DataTypes.DATE
     }
 
     });

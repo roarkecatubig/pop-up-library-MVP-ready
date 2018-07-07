@@ -164,7 +164,7 @@ $(document).ready(function () {
           url: "/update-user/" + user_input
         })
           .then(function() {
-            window.location.href = "/my-dreams";
+            window.location.href = "/home";
           });
     }
   

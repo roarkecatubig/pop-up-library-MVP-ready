@@ -2,11 +2,26 @@ var path = require("path");
 const passport = require('passport');
 
 module.exports = function(app) {
-    
+    // Pop Up Library App Routes
     app.get("/", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/index.html"));
     });
 
+    app.get("/home", function(req, res) {
+        if (req.user) {
+            res.sendFile(path.join(__dirname, "../public/home.html"));
+        }
+
+        else {
+            res.redirect("/")
+        }
+    });
+
+    app.get("/disclaimer", function (req, res) {
+        res.sendFile(path.join(__dirname, "../public/disclaimer.html"))
+    });
+
+    // Suite Dreams Routes
     app.get("/new-dream", function(req, res) {
         if (req.user) {
             res.sendFile(path.join(__dirname, "../public/newdream.html"));
@@ -17,9 +32,9 @@ module.exports = function(app) {
         }
       });
 
-    app.get("/my-dreams", function(req, res) {
+    app.get("/home", function(req, res) {
         if (req.user) {
-            res.sendFile(path.join(__dirname, "../public/new_mydreams.html"));
+            res.sendFile(path.join(__dirname, "../public/home.html"));
         }
 
         else {

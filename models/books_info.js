@@ -2,44 +2,44 @@ module.exports = function(sequelize, DataTypes) {
   var Book = sequelize.define("Book", {
 
     title: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       validate: {
           len: [1]
       }
     },
     author: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: true,
       validate: {
           len: [1]
       }
     },
     genre: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: true,
       validate: {
           len: [1]
       }
     }, 
     summary: {
-      type: Sequelize.TEXT, 
+      type: DataTypes.TEXT, 
       allowNull: false 
     },
     userID: {
-      type: Sequelize.INTEGER, 
+      type: DataTypes.INTEGER, 
       allowNull: false
     },
     bookStatus: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false
     },
     userInventory: {
-      type: Sequelize.BOOLEAN,
+      type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: true 
     },
     userRequest: {
-      type: Sequelize.BOOLEAN,
+      type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false 
     }
