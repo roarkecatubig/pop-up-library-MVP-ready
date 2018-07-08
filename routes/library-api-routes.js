@@ -82,6 +82,30 @@ module.exports = function (app) {
         });
     });
 
+
+    app.post("/book/offered", function(req, res) {
+        db.User.findOne({
+            where: {
+                id: req.user.id,
+            }
+        }).then(function (user_info) {
+            db.Book.create({
+                title: req.body.title,
+                author: req.body.author,
+                category: req.body.category,
+                description: req.body.description,
+                postType: "OFFER",
+                postStatus: "OFFER",
+                thumbnail: req.body.thumbnail,
+                UserId: req.user.id
+            })
+          .then(function(postedBook) {
+            res.json(postedBook);
+          });
+        });
+    });
+
+
     // Get route for returning posts of a specific category
     app.get("/profile/requests", function(req, res) {
         db.Book.findAll({
@@ -95,6 +119,7 @@ module.exports = function (app) {
         });
     });
 
+<<<<<<< HEAD
     // Get route for returning posts of a specific category
     app.get("/community/requests", function(req, res) {
         db.Book.findAll({
@@ -104,6 +129,17 @@ module.exports = function (app) {
         })
         .then(function(book_requests) {
             res.json(book_requests);
+=======
+    //Get route for returning all offered books
+    app.get("/book/offers", function(req, res) {
+        db.Book.findAll({
+        where: {
+            postType: "OFFER"
+        }
+        })
+        .then(function(book_offers) {
+            res.json(book_offers);
+>>>>>>> 35213c8ab35342cea067400bc9c078292c7d259b
         });
     });
 
