@@ -95,6 +95,18 @@ module.exports = function (app) {
         });
     });
 
+    // Get route for returning posts of a specific category
+    app.get("/community/requests", function(req, res) {
+        db.Book.findAll({
+        where: {
+            postType: "REQUEST",
+        }
+        })
+        .then(function(book_requests) {
+            res.json(book_requests);
+        });
+    });
+
     // DELETE route for deleting Dream
     app.delete("/book/request/delete/:id", function (req, res) {
         db.Book.destroy({

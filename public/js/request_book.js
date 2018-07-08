@@ -118,6 +118,7 @@ $(document).ready(function() {
         $.post("/book/request", selectedBook, function(result) {
             console.log(result)
             console.log("Request submitted")
+            window.location.href = "/home";
         })
     //   window.location.href = "/new-dream?dream_id=" + currentDream.id;
     }

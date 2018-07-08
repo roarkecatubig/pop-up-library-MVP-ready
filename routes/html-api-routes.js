@@ -38,12 +38,16 @@ module.exports = function(app) {
     })
 
     app.get("/requested_books", function (req, res) {
-        res.sendFile(path.join(__dirname, "../public/7_requested-books.html"))
+        res.sendFile(path.join(__dirname, "../public/requested_books.html"))
     });
 
     app.get("/offered_books", function (req, res) {
         res.sendFile(path.join(__dirname, "../public/8_offered_books.html"))
     });
+
+    // app.get("/community/requests/all", function (req, res) {
+    //     res.sendFile(path.join(__dirname, "../public/7_requested_books.html"))
+    // });
 
 // **************************************************************************************************************************
     // Suite Dreams Routes
