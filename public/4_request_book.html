@@ -37,8 +37,8 @@
             <div class="column" id="nav-tabs">
                 <div class="tabs">
                     <ul>
-                        <li class="is-active"><a id="active-tab"href="/my-dream">Go Back</a></li>
-                        <li><a href="/social-feed">Your Profile</a></li>
+                        <li class="is-active"><a id="active-tab"href="/home">Go Back</a></li>
+                        <li><a href="/home">Your Profile</a></li>
                         <li><a href="/insights">Community Library</a></li>
                     </ul>
                 </div>
@@ -47,44 +47,45 @@
         </div>
     </div>
     <div class="columns is-mobile is-centered">
-        <p class="title is-4">Requested Books in Your Area</p>
+        <p class="title is-4">Search for a Book to Request</p>
         </div>
     <div class="columns is-mobile is-centered">
         <div class="field has-addons">
             <div class="control">
-                <input class="input" type="text" placeholder="Find a book to request or offer">
+                <input class="input" type="text" id="searchInput" placeholder="Find a book to request or offer">
             </div>
             <div class="control">
-                <a class="button is-info">
+                <a class="button is-info" id="searchBtn">
                 Search
                 </a>
             </div>
         </div>
     </div>
     <div class="columns is-mobile is-centered">
-        <div class="card">
+        <div id="result">
+
+        </div>
+        <!-- <div class="card">
             <div class="card-content">
                 <div class="media">
                     <div class="media-left">
                         <figure class="image is-96x96">
-                        <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
                         </figure>
                     </div>
                     <div class="media-content">
                         <p class="title is-4">Book Title</p>
-                        <hr>
                         <p class="subtitle is-6" id="publish_date">Publish Date: </p>
-                        <p class="subtitle is-6" id="isbn">ISBN #: </p>
-                        <p class="subtitle is-6" id="lender_name">Requester: </p>
-                        <p class="subtitle is-6" id="zip_code">Zip code: </p>
+                        <p class="subtitle is-6" id="zip_code">Author: </p>
+                        <hr>
                     </div>
                 </div>
                 <div class="content" id="book_synopsis">Book synopsis.</div>
             </div>
             <footer class="card-footer">
-                <a href="/request" class="card-footer-item">Offer this Book</a>
+                <a href="/request" class="card-footer-item">Request this Book</a>
             </footer>
-        </div>
+        </div> -->
     </div>
 
     </div>
@@ -93,7 +94,7 @@
 </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
-    <script src="js/disclaimer.js" type="text/javascript"></script>
+    <script src="js/request_book.js" type="text/javascript"></script>
         
   </body>
 </html>

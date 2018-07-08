@@ -4,9 +4,11 @@ $(document).ready(function () {
     // var dreamContainer = $("#dream-container");
     // var chartContainer = $(".chart-container")
     var inputUser = $("#user_name_input");
+    var inputZip = $("#zip_code_input");
     var nameHelpText = $("#user_help_text");
     var welcomeMessage = $("#welcome_message");
     var displayedUser;
+    $(document).on("click", ".delete-book", deleteRequest);
     // // Points to the dropdown menu for selecting what privacy setting to query 
     // var privacySetting = $("#privacy");
     // //click events for the edit and delete button
@@ -19,7 +21,7 @@ $(document).ready(function () {
 
    $("#save_user").on("click", checkUsernames);
     
-    var dreams;
+    var book_requests;
 
     // Checks if logged in user has a set user name
     function validateUserName() {
@@ -35,7 +37,7 @@ $(document).ready(function () {
         else {
           displayedUser = user[0].userName;
           welcomeMessage.text("Welcome " + displayedUser)
-          getDreams()
+          getBookRequests()
         }
       })
     }
@@ -105,13 +107,14 @@ $(document).ready(function () {
     // When the user clicks "Save User" on the modal, it will check to see if that user name is already being used
     function checkUsernames() {
       var inputtedUser = inputUser.val().trim();
-      console.log("Username input: " + inputtedUser)
+      var inputtedZip = inputZip.val().trim();
+      console.log("Username input: " + inputtedUser);
       var userString = "/" + inputtedUser;
 
       $.get("/check-user" + userString, function(data) {
         console.log(data);
         if (data === null) {
-          updateUsername(inputtedUser)
+          updateUsername(inputtedUser, inputtedZip)
         }
 
         else {
@@ -122,12 +125,12 @@ $(document).ready(function () {
       })
     }
 
-    function updateUsername(user_input) {
+    function updateUsername(user_input, zip_input) {
       displayedUser = user_input;
       welcomeMessage.text("Welcome " + displayedUser);
         $.ajax({
           method: "PUT",
-          url: "/update-user/" + user_input
+          url: "/update-user/" + user_input + "/" + zip_input
         })
           .then(function() {
             window.location.href = "/home";
@@ -135,39 +138,125 @@ $(document).ready(function () {
     }
   
     // This function grabs dreams from the database and updates the view
-    function getDreams(privacy_setting) {
-      var privacyString = privacy_setting || "";
-      if (privacyString) {
-        privacyString = "/privacy/" + privacyString;
-        console.log("Privacy String:" + privacyString)
-      }
-      $.get("/my-feed" + privacyString, function (data) {
-        console.log("Dreams", data);
-        dreams = data;
-        if (!dreams || !dreams.length) {
+    function getBookRequests() {
+      $.get("/profile/requests", function (data) {
+        console.log("Book requests", data);
+        book_requests = data;
+        if (!book_requests || !book_requests.length) {
           displayEmpty();
         }
         else {
-          initializeRows();
+          displayRequests(book_requests);
         }
       });
+    }
+
+    function displayRequests(results_list) {
+      for (i=0; i < results_list.length; i++) {
+
+        var dataObj = {
+          id: results_list[i].id,
+          title: results_list[i].title,
+          category: results_list[i].category,
+          publishedDate: results_list[i].publishedDate,
+          description: results_list[i].description,
+          author: results_list[i].author,
+          thumbnail: results_list[i].thumbnail
+      }
+
+        var fullCard = $("<div>");
+        fullCard.addClass("card");
+
+        var cardContent = $("<div>");
+        cardContent.addClass("card-content");
+
+        var media = $("<div>");
+        media.addClass("media");
+
+        // Media-left content
+        var mediaLeft = $("<div>");
+        mediaLeft.addClass("media-left");
+
+        var mediaLeftFigure = $("<figure>");
+        mediaLeftFigure.addClass("image is-96x96");
+
+        var mediaLeftImage = $("<img>");
+        mediaLeftImage.attr("src", results_list[i].thumbnail);
+
+        mediaLeftFigure.append(mediaLeftImage);
+        mediaLeft.append(mediaLeftFigure);
+
+        // Media content 
+        var mediaContent = $("<div>");
+        mediaContent.addClass("media-content");
+
+        var title = $("<p>");
+        title.addClass("title is-4");
+        title.text(results_list[i].title);
+
+        var pubDate = $("<p>");
+        pubDate.addClass("subtitle is-6");
+        pubDate.text(results_list[i].publishedDate)
+
+        var author = $("<p>");
+        author.addClass("subtitle is-6");
+        author.text(results_list[i].author);
+
+        var divider = $("<hr>")
+
+        mediaContent.append(title);
+        mediaContent.append(pubDate);
+        mediaContent.append(author);
+        mediaContent.append(divider);
+
+        media.append(mediaLeft);
+        media.append(mediaContent)
+
+        var bookDesc = $("<div>")
+        bookDesc.addClass("content");
+        bookDesc.text(results_list[i].description);
+
+        cardContent.append(media)
+        cardContent.append(bookDesc);
+
+        fullCard.append(cardContent);
+
+        // Card Footer
+        var footer = $("<footer>");
+        footer.addClass("card-footer");
+
+        var requestLink = $("<a>")
+        // requestLink.attr("href", "/request");
+        requestLink.addClass("card-footer-item delete-book");
+        requestLink.text("Delete this Request");
+        requestLink.data("book", dataObj)
+
+        footer.append(requestLink);
+        fullCard.append(footer);
+        
+        $("#requested_books").append(fullCard)
+    }
     }
   
   
     // This function does an API call to delete dreamss
-    function deleteDream(id) {
+    function deleteRequest() {
+      var selectedBook = $(this).data("book");
+      console.log(selectedBook)
       $.ajax({
         method: "DELETE",
-        url: "/delete-dream/" + id
+        url: "/book/request/delete/" + selectedBook.id
       })
         .then(function () {
-          getDreams(privacySetting.val());
+          getBookRequests();
         });
     }
   
     // Getting the initial list of dreams
     // getDreams();
     validateUserName();
+
+    // **********************************************************************************************************************
   
     // InitializeRows handles appending all of our constructed post HTML inside
     function initializeRows() {
@@ -332,14 +421,14 @@ $(document).ready(function () {
     }
   
     // This function displays a message when there are no dreams
-    function displayEmpty() {
-      chartContainer.empty();
-      dreamContainer.empty();
-      var messageH2 = $("<h2>");
-      messageH2.css({ "text-align": "center", "margin-top": "50px" });
-      messageH2.html("No posts yet for this category, navigate <a href='/cms'>here</a> in order to create a new dream.");
-      dreamContainer.append(messageH2);
-    }
+    // function displayEmpty() {
+    //   chartContainer.empty();
+    //   dreamContainer.empty();
+    //   var messageH2 = $("<h2>");
+    //   messageH2.css({ "text-align": "center", "margin-top": "50px" });
+    //   messageH2.html("No posts yet for this category, navigate <a href='/cms'>here</a> in order to create a new dream.");
+    //   dreamContainer.append(messageH2);
+    // }
   
     // This function handles reloading new dreams when the category changes
     function handlePrivacyChange() {
