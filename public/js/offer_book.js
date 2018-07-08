@@ -3,7 +3,7 @@ $(document).ready(function() {
     var searchBtn = $("#searchBtn");
     var searchInput = $("#searchInput");
     
-    // $(document).on("click", ".card-footer-item", handleBookRequest);
+    $(document).on("click", ".card-footer-item", handleBookOffer);
   
     // Adding an event listener for when the form is submitted
     $(searchBtn).on("click", function handleFormSubmit(event) {
@@ -100,7 +100,7 @@ $(document).ready(function() {
             footer.addClass("card-footer");
 
             var requestLink = $("<a>")
-            requestLink.attr("href", "/book/offer/details");
+            // requestLink.attr("href", "/book/offer");
             requestLink.addClass("card-footer-item");
             requestLink.text("Offer this Book");
             requestLink.data("book", dataObj)
@@ -112,10 +112,10 @@ $(document).ready(function() {
         }
     }
 
-    function handleBookRequest() {
+    function handleBookOffer() {
         var selectedBook = $(this).data("book");
         console.log(selectedBook)
-        $.post("/book/request", selectedBook, function(result) {
+        $.post("/book/offer", selectedBook, function(result) {
             console.log(result)
             console.log("Request submitted")
         })
