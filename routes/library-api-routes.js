@@ -119,6 +119,17 @@ module.exports = function (app) {
         });
     });
 
+<<<<<<< HEAD
+    // Get route for returning posts of a specific category
+    app.get("/community/requests", function(req, res) {
+        db.Book.findAll({
+        where: {
+            postType: "REQUEST",
+        }
+        })
+        .then(function(book_requests) {
+            res.json(book_requests);
+=======
     //Get route for returning all offered books
     app.get("/book/offers", function(req, res) {
         db.Book.findAll({
@@ -128,6 +139,7 @@ module.exports = function (app) {
         })
         .then(function(book_offers) {
             res.json(book_offers);
+>>>>>>> 35213c8ab35342cea067400bc9c078292c7d259b
         });
     });
 

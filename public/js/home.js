@@ -45,63 +45,6 @@ $(document).ready(function () {
     // If no userName info was found for the logged in user, it will generate the modal
     function renderModal(new_user) {
       $(".modal").addClass("is-active");  
-      // var userPrompt = $(".user-container");
-
-      // var modalDiv = $("<div>");
-      // modalDiv.addClass("modal");
-
-      // var modalBackground = $("<div>");
-      // modalBackground.addClass("modal-background");
-
-      // var modalCard = $("<div>");
-      // modalCard.addClass("modal-card");
-
-      // var modalHeader = $("<header>")
-      // modalHeader.addClass("modal-card-head");
-
-      // var modalTitle = $("<p>");
-      // modalTitle.text("Modal Title");
-      // modalTitle.addClass("modal-card-title");
-
-      // var exitButton = $("<button>");
-      // exitButton.addClass("delete");
-      // exitButton.attr("aria-label", "close");
-
-      // var modalBody = $("<section>");
-      // modalBody.addClass("modal-card-body");
-      
-      // var userInput = $("<input>");
-      // userInput.addClass("input");
-      // userInput.attr("type", "text");
-      // userInput.attr("placeholder", "User Input");
-
-      // var modalFooter = $("<footer>");
-      // modalFooter.addClass("modal-card-foot");
-      
-      // var saveButton = $("<button>");
-      // saveButton.addClass("button is-success");
-      // saveButton.text("Save Changes");
-
-      // var cancelButton = $("<button>");
-      // cancelButton.addClass("button");
-      // cancelButton.text("Cancel");
-
-      // modalHeader.append(modalTitle);
-      // modalHeader.append(exitButton);
-
-      // modalBody.append(userInput);
-
-      // modalFooter.append(saveButton);
-      // modalFooter.append(cancelButton);
-
-      // modalCard.append(modalHeader);
-      // modalCard.append(modalBody);
-      // modalCard.append(modalFooter);
-
-      // modalDiv.append(modalBackground);
-      // modalDiv.append(modalCard);
-
-      // userPrompt.append(modalDiv);
     }
 
     // When the user clicks "Save User" on the modal, it will check to see if that user name is already being used
