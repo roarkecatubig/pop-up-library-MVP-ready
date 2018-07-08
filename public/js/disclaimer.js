@@ -17,7 +17,7 @@ $(document).ready(function () {
 
         else {
             console.log("Form submitted")
-            window.location.href="/user-action"
+            window.location.href="/home"
         }
     });
 
