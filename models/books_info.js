@@ -3,42 +3,79 @@ module.exports = function(sequelize, DataTypes) {
 
     title: {
       type: DataTypes.STRING,
-      validate: {
-          len: [1]
-      }
+      allowNull: false
     },
+
     author: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-          len: [1]
-      }
-    },
-    genre: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-          len: [1]
-      }
-    }, 
-    summary: {
-      type: DataTypes.TEXT, 
-      allowNull: false 
-    },
-    bookStatus: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    userInventory: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: true 
+
+    category: {
+      type: DataTypes.STRING,
+      allowNull: true
     },
-    userRequest: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: false 
+
+    description: {
+      type:DataTypes.TEXT,
+      allowNull: true
+    },
+
+    // Either a book request or book offering
+    postType: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+
+    postStatus: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+
+    thumbnail: {
+      type: DataTypes.STRING,
+      allowNull: true
     }
+    // ****************************************
+
+    // title: {
+    //   type: DataTypes.STRING,
+    //   validate: {
+    //       len: [1]
+    //   }
+    // },
+    // author: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    //   validate: {
+    //       len: [1]
+    //   }
+    // },
+    // genre: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    //   validate: {
+    //       len: [1]
+    //   }
+    // }, 
+    // summary: {
+    //   type: DataTypes.TEXT, 
+    //   allowNull: false 
+    // },
+    // bookStatus: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true
+    // },
+    // userInventory: {
+    //   type: DataTypes.BOOLEAN,
+    //   allowNull: false,
+    //   defaultValue: true 
+    // },
+    // userRequest: {
+    //   type: DataTypes.BOOLEAN,
+    //   allowNull: false,
+    //   defaultValue: false 
+    // }
 
   });
 
