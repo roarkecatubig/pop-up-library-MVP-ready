@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Suite Dreams</title>
+        <title>Little Free Library</title>
         <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
 
         <script src="https://code.jquery.com/jquery.js"></script>
@@ -14,44 +14,25 @@
     
       </head>
   <body>
-
-<!--navigation-->
-<nav class="navbar is-black" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-
-    <a class="navbar-item" href="/my-dreams"><img src="/photos/logo_2_white.png" alt="SuiteDreams Logo" width="112" height="28"></a>
-
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <!-- <a class="navbar-item" href="/new-dream">New Dream</a>
-      <a class="navbar-item" id="my_dreams" href="/my-dreams">My Dreams</a>
-      <a class="navbar-item" href="/social-feed">Social Feed</a> -->
-
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="field is-grouped">
-              <p class="control">
-                <a class="button is-link is-outlined" data-social-network="Google" data-social-action="google" data-social-target="http://localhost:4000" target="" href="/auth/google">
-                  <span class="icon">
-                    <i class="fab fa-google"></i>
-                  </span>
-                  <span>
-                  Sign up with Google
-                </span>
-              </a>
-            </p>
-          </div>
-        </div>
-      </a>
- 
-  </div>
-</nav>
-
       
 <!--hero-->
 <section class="hero is-black is-fullheight" id="hero-photo-one">
   <div>
     <div class="col">
-        <form>
+
+        <div class="column">
+            <h1 class="title has-text-centered">Insert App Name Here</h1>
+      
+            <a class="button is-link is-inverted" data-social-network="Google" data-social-action="google" data-social-target="http://localhost:4000" target="" href="/auth/google">
+              <span class="icon">
+                <i class="fab fa-google"></i>
+              </span>
+              <span>
+              Sign up with Google
+            </span>
+          </a>
+</div>      
+        <form id="index_form">
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
