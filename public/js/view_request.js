@@ -5,14 +5,17 @@ $(document).ready(function() {
     var updating = false;
     var requestObject;
     var respondingUserObject;
-    var respondingUser;
+    // var respondingUser;
   
     if (url.indexOf("?request_id=") !== -1) {
       requestId = url.split("=")[1];
+    //   getUserInfo()
       getRequestData(requestId);
+    //   buildRequestCard(requestObject, respondingUserObject)
     }
 
     // Gets data from db to pre-fill the newdream.html form
+    // Works
     function getRequestData(book_id) {
         $.get("/view-request/" + book_id, function(data) {
             if (data) {
@@ -25,46 +28,29 @@ $(document).ready(function() {
                     ISBN: data.ISBN,
                     respondingUser: data.respondingUser
                 }
-
-                getUserData(requestObject);
+                console.log(requestObject)
+                getUserInfo(requestObject);
             }
         })
     }
 
-    function getUserData(object) {
-        user = object.respondingUser;
-        console.log(user)
-        $.get("/profile/" + user, function(data) {
-            if (data) {
-                respondingUserObject = {
-                    userName: data.userName,
-                    address: data.preferredDropAddress
-                }
-                
-                // console.log("requestObject");
-                // console.log(requestObject);
-                // console.log("respondingUserObject");
-                // console.log(respondingUserObject)
-                buildRequestCard(requestObject, respondingUserObject);
-            }
-            else {
-                console.log("Nothing found")
-            }
-
-        })
+    function getUserInfo(book_object) {
+        var user_id = book_object.respondingUser;
+        $.ajax({
+            method: "GET",
+            url: "/user-info/" + user_id
+          })
+            .then(function(data) {
+              console.log(data)
+              respondingUserObject = {
+                  id: data.id,
+                  userName: data.userName,
+                  address: data.preferredDropAddress, 
+              }
+              console.log(respondingUserObject)
+              buildRequestCard(requestObject, respondingUserObject)
+          });
     }
-
-    //             respondingUser = data.respondingUser
-    //             console.log(respondingUser)
-    //             console.log(data.respondingUser)
-
-
-        
-                
-    //         }
-    //     })
-        
-    // }
 
     function buildRequestCard(book_info, user_info) {
         console.log("book_info")
@@ -163,9 +149,9 @@ $(document).ready(function() {
             declineLink.text("Decline Offer");
             declineLink.data("book", dataObj)
       
-            if (results_list[i].UserId === id) {
-              requestLink.attr("title", "Disabled button")
-            }
+            // if (results_list[i].UserId === id) {
+            //   requestLink.attr("title", "Disabled button")
+            // }
       
             footer.append(acceptLink);
             footer.append(declineLink);

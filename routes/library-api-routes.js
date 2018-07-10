@@ -270,19 +270,31 @@ module.exports = function (app) {
         });
     });
 
-    app.get("profile/:user", function (req, res) {
-        db.User.findAll()
-        .then(function(err, user_info) {
-            if (err) {
-                console.log(err)
+    app.get("/user-info/:id", function(req, res) {
+        db.User.findOne({
+            where: {
+              id: req.params.id
             }
-
-            else if (user_info) {
-                res.json(user_info)
-            }
-
-        })
+          }).then(function(data){
+              res.json(data);
+          })
     })
+
+
+
+    // app.get("profile", function (req, res) {
+    //     db.Users.findAll()
+    //     .then(function(err, user_info) {
+    //         if (err) {
+    //             console.log(err)
+    //         }
+
+    //         else if (user_info) {
+    //             res.json(user_info)
+    //         }
+
+    //     })
+    // })
 
 
 

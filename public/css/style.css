@@ -11,6 +11,14 @@
     color:black;
 }
 
+.hero.is-dark .title {
+    color: black;
+}
+
+.hero.is-dark .subtitle {
+    color: black;
+}
+
 .hero.is-primary .subtitle {
     color: black;
 }
