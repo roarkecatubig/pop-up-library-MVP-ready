@@ -164,6 +164,8 @@ $(document).ready(function () {
         console.log(data);
         console.log("Update sent");
         getBookRequests();
+        console.log("You have responded to the request.")
+        window.location.href = "/home";
       });
   }
 

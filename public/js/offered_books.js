@@ -164,6 +164,7 @@ $(document).ready(function () {
           console.log(data);
           console.log("Update sent");
           getBookOffers();
+
         });
     }
   
