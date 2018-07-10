@@ -36,6 +36,18 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       type: DataTypes.DATE
     },
+  preferredDropLAT: {
+    type: DataTypes.DECIMAL(10,7),
+    allowNull: true
+  },
+  preferredDropLNG: {
+    type: DataTypes.DECIMAL(10,7),
+    allowNull: true
+  },
+  preferredDropAddress: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
   last_login: {
       type: DataTypes.DATE
     }

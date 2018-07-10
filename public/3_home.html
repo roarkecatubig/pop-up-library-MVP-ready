@@ -37,9 +37,10 @@
             <div class="column" id="nav-tabs">
                 <div class="tabs">
                     <ul>
-                        <li class="is-active"><a id="active-tab"href="/my-dream">Go Back</a></li>
-                        <li><a href="/social-feed">Your Profile</a></li>
+                        <li class="is-active"><a href="/my-dream">Go Back</a></li>
+                        <li><a id="active-tab" href="/home">Your Profile</a></li>
                         <li><a href="/requested_books">Community Requests</a></li>
+                        <li><a href="/offered_books">Community Offerings</a></li>
                     </ul>
                 </div>
             </div>
@@ -53,13 +54,21 @@
                     <div class="modal-background"></div>
                     <div class="modal-card">
                         <header class="modal-card-head">
-                        <p class="modal-card-title">Prompt Username</p>
+                        <p class="modal-card-title">Please Enter Your Profile Information</p>
                         <button class="delete" aria-label="close"></button>
                         </header>
                         <section class="modal-card-body">
                             <input class="input" id="user_name_input" type="text" placeholder="User name input">
                             <p class="help is-danger" id="user_help_text"></p>
                             <input class="input" id="zip_code_input" type="text" placeholder="Zip code">
+                            <input class="input" id="address_input" type="text" placeholder="Enter your preferred library address">
+                            <p class="help is-info">Your preferred library will be your default location where you will drop off your book when a user requests your book.</p>
+                            <p class="help is-info" id="formatted_address"></p>
+                            <div class="control">
+                                <a class="button is-info" id="confirm_address">
+                                    Search and Confirm Address
+                                </a>
+                            </div>
                         </section>
                         <footer class="modal-card-foot">
                         <button class="button is-success" id="save_user">Save User</button>
@@ -78,43 +87,48 @@
                     <a class="button is-large" href="/request_book">Request a Book</a>
                     <a class="button is-large" href="/offer_book">Offer a Book</a>
                 </div>
-                <h1 class="title has-text-centered">Books you have requested</h1>
-                <div class="columns is-mobile">
-                    <div id="requested_books">
-                        
-                    </div>
+                
+            </div>
+        </div>
+        <div class="columns is-mobile is-centered">
+            <div class="column is-mobile is-centered">
+                <h1 class="title has-text-centered">Books you have Requested</h1>
+                <div id="requested_books"></div>
+            </div>
+        </div>
+        <div class="columns is-mobile is-centered">
+            <div class="column is-mobile is-centered">
+                <h1 class="title has-text-centered">Books you have Offered</h1>
+                <div id="offered_books"></div>
+            </div>
+        </div>
 
-                    <div class="columns is-mobile">
-                        <div id="offered_books">
-                    </div>
-                </div>
-                <div class="columns is-mobile is-centered">
-                    <div class="card">
-                        <header class="card-header">
-                            <p class="card-header-title">
-                            Your Profile
-                            </p>
-                            <a href="#" class="card-header-icon" aria-label="more options">
-                            <span class="icon">
-                                <i class="fas fa-angle-down" aria-hidden="true"></i>
-                            </span>
-                            </a>
-                        </header>
-                        <div class="card-content">
-                            <div class="content">
-                                <p>Username: <span>"Insert username"</span></p>
-                                <p>Last Book Taken: <span>"Insert last book taken"</span></p>
-                                <p>Last Book Offered: <span>"Insert last book offered"</span></p>
-                                <p>Honor Ranking: <span>"Insert honor ranking"</span></p>
-                                <p>Zip Code Location: <span>"Insert user specified zip code"</span></p>
-                            </div>
-                        </div>
-                        
+        <div class="columns is-mobile is-centered">
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                    Your Profile
+                    </p>
+                    <a href="#" class="card-header-icon" aria-label="more options">
+                    <span class="icon">
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                    </a>
+                </header>
+                <div class="card-content">
+                    <div class="content">
+                        <p>Username: <span>"Insert username"</span></p>
+                        <p>Last Book Taken: <span>"Insert last book taken"</span></p>
+                        <p>Last Book Offered: <span>"Insert last book offered"</span></p>
+                        <p>Honor Ranking: <span>"Insert honor ranking"</span></p>
+                        <p>Zip Code Location: <span>"Insert user specified zip code"</span></p>
                     </div>
                 </div>
                 
             </div>
         </div>
+                
+            </div>
        
     </div>
     <div class="hero-foot">

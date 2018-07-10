@@ -32,9 +32,19 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
 
+    respondingUser: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+
     thumbnail: {
       type: DataTypes.STRING,
       allowNull: true
+    },
+
+    ISBN: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
     // ****************************************
 
