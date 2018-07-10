@@ -6,9 +6,12 @@ $(document).ready(function () {
     var inputUser = $("#user_name_input");
     var inputZip = $("#zip_code_input");
     var nameHelpText = $("#user_help_text");
+    var formattedAddress = $("#formatted_address");
+    var inputAddress = $("#address_input");
     var welcomeMessage = $("#welcome_message");
     var displayedUser;
     $(document).on("click", ".delete-book", deleteRequest);
+    $(document).on("click", ".confirm-book", viewRequest);
     // // Points to the dropdown menu for selecting what privacy setting to query 
     // var privacySetting = $("#privacy");
     // //click events for the edit and delete button
@@ -20,8 +23,44 @@ $(document).ready(function () {
    });
 
    $("#save_user").on("click", checkUsernames);
+   $("#confirm_address").on("click", searchAddress);
     
     var book_requests;
+
+    function searchAddress() {
+      var inputtedAddress = {
+        address: inputAddress.val().trim()
+      };
+      console.log(inputtedAddress)
+      $.post("/check-address", inputtedAddress, function(data) {
+        console.log(data)
+        formattedAddress.text("Your Formatted Address: " + data[0].formatted_address)
+        var addressObject = {
+          address: data[0].formatted_address,
+          lat: data[0].location.lat,
+          lng:data[0].location.lng, 
+        }
+        console.log("vvv Address Object vvv")
+        console.log(addressObject)
+        
+      })
+
+    }
+
+    function saveAddress() {
+      var inputtedAddress = {
+        address: inputAddress.val().trim()
+      };
+      console.log(inputtedAddress)
+      $.ajax({
+        method: "PUT",
+        url: "/save-address",
+        data: inputtedAddress
+      })
+        .then(function() {
+          window.location.href = "/home";
+      });
+    }
 
     // Checks if logged in user has a set user name
     function validateUserName() {
@@ -38,6 +77,7 @@ $(document).ready(function () {
           displayedUser = user[0].userName;
           welcomeMessage.text("Welcome " + displayedUser)
           getBookRequests()
+          getBookOffers()
         }
       })
     }
@@ -76,7 +116,7 @@ $(document).ready(function () {
           url: "/update-user/" + user_input + "/" + zip_input
         })
           .then(function() {
-            window.location.href = "/home";
+            saveAddress();
           });
     }
   
@@ -94,7 +134,20 @@ $(document).ready(function () {
       });
     }
 
-    function displayRequests(results_list) {
+    function getBookOffers() {
+      $.get("/profile/offers", function (data) {
+        console.log("Book offers", data);
+        book_offers = data;
+        if (!book_offers || !book_offers.length) {
+          displayEmpty();
+        }
+        else {
+          displayOffers(book_offers);
+        }
+      });
+    }
+
+    function displayOffers(results_list) {
       for (i=0; i < results_list.length; i++) {
 
         var dataObj = {
@@ -104,7 +157,9 @@ $(document).ready(function () {
           publishedDate: results_list[i].publishedDate,
           description: results_list[i].description,
           author: results_list[i].author,
-          thumbnail: results_list[i].thumbnail
+          thumbnail: results_list[i].thumbnail,
+          address: results_list[i].User.preferredDropAddress,
+          username: results_list[i].User.userName
       }
 
         var fullCard = $("<div>");
@@ -137,6 +192,14 @@ $(document).ready(function () {
         title.addClass("title is-4");
         title.text(results_list[i].title);
 
+        var offerer = $("<p>");
+        offerer.addClass("subtitle is-6");
+        offerer.text("Offerer: " + results_list[i].User.userName)
+  
+        var address = $("<p>");
+        address.addClass("subtitle is-6");
+        address.text("Preferred Drop Address: " + results_list[i].User.preferredDropAddress)
+
         var pubDate = $("<p>");
         pubDate.addClass("subtitle is-6");
         pubDate.text(results_list[i].publishedDate)
@@ -145,22 +208,25 @@ $(document).ready(function () {
         author.addClass("subtitle is-6");
         author.text(results_list[i].author);
 
+        var bookDesc = $("<div>")
+        bookDesc.addClass("content");
+        bookDesc.text("Status: " + results_list[i].postStatus);
+
         var divider = $("<hr>")
 
         mediaContent.append(title);
+        mediaContent.append(offerer);
+        mediaContent.append(address);
         mediaContent.append(pubDate);
         mediaContent.append(author);
+        mediaContent.append(bookDesc)
         mediaContent.append(divider);
 
         media.append(mediaLeft);
         media.append(mediaContent)
 
-        var bookDesc = $("<div>")
-        bookDesc.addClass("content");
-        bookDesc.text(results_list[i].description);
-
         cardContent.append(media)
-        cardContent.append(bookDesc);
+        // cardContent.append(bookDesc);
 
         fullCard.append(cardContent);
 
@@ -177,8 +243,135 @@ $(document).ready(function () {
         footer.append(requestLink);
         fullCard.append(footer);
         
+        $("#offered_books").append(fullCard)
+    }
+    }
+
+    function getBookOffers() {
+      $.get("/profile/offers", function (data) {
+        console.log("Book offers", data);
+        book_offers = data;
+        if (!book_offers || !book_offers.length) {
+          displayEmpty();
+        }
+        else {
+          displayOffers(book_offers);
+        }
+      });
+    }
+
+    function displayRequests(results_list) {
+      for (i=0; i < results_list.length; i++) {
+
+        var dataObj = {
+          id: results_list[i].id,
+          title: results_list[i].title,
+          category: results_list[i].category,
+          publishedDate: results_list[i].publishedDate,
+          description: results_list[i].description,
+          author: results_list[i].author,
+          thumbnail: results_list[i].thumbnail,
+          respondingUser: results_list[i].respondingUser
+      }
+
+        var fullCard = $("<div>");
+        fullCard.addClass("card");
+
+        var cardContent = $("<div>");
+        cardContent.addClass("card-content");
+
+        var media = $("<div>");
+        media.addClass("media");
+
+        // Media-left content
+        var mediaLeft = $("<div>");
+        mediaLeft.addClass("media-left");
+
+        var mediaLeftFigure = $("<figure>");
+        mediaLeftFigure.addClass("image is-96x96");
+
+        var mediaLeftImage = $("<img>");
+        mediaLeftImage.attr("src", results_list[i].thumbnail);
+
+        mediaLeftFigure.append(mediaLeftImage);
+        mediaLeft.append(mediaLeftFigure);
+
+        // Media content 
+        var mediaContent = $("<div>");
+        mediaContent.addClass("media-content");
+
+        var title = $("<p>");
+        title.addClass("title is-4");
+        title.text(results_list[i].title);
+
+        var requester = $("<p>");
+        requester.addClass("subtitle is-6");
+        requester.text("Requester: " + results_list[i].User.userName)
+  
+        var zipCode = $("<p>");
+        zipCode.addClass("subtitle is-6");
+        zipCode.text("Zip Code: " + results_list[i].User.zipCode)
+
+        var pubDate = $("<p>");
+        pubDate.addClass("subtitle is-6");
+        pubDate.text(results_list[i].publishedDate)
+
+        var author = $("<p>");
+        author.addClass("subtitle is-6");
+        author.text(results_list[i].author);
+
+        var bookDesc = $("<div>")
+        bookDesc.addClass("content");
+        bookDesc.text("Status: " + results_list[i].postStatus);
+
+        var divider = $("<hr>")
+
+        mediaContent.append(title);
+        mediaContent.append(requester);
+        mediaContent.append(zipCode);
+        mediaContent.append(pubDate);
+        mediaContent.append(author);
+        mediaContent.append(bookDesc)
+        mediaContent.append(divider);
+
+        media.append(mediaLeft);
+        media.append(mediaContent)
+
+        cardContent.append(media)
+        // cardContent.append(bookDesc);
+
+        fullCard.append(cardContent);
+
+        // Card Footer
+        var footer = $("<footer>");
+        footer.addClass("card-footer");
+
+        var requestLink = $("<a>")
+        // requestLink.attr("href", "/request");
+        if (results_list[i].postStatus === "REQUESTED") {
+          requestLink.addClass("card-footer-item delete-book");
+          requestLink.text("Delete this Request");
+          requestLink.data("book", dataObj)
+        }
+
+        else if (results_list[i].postStatus === "PENDING") {
+          requestLink.addClass("card-footer-item confirm-book");
+          requestLink.text("Accept / Decline Book Offer");
+          requestLink.data("book", dataObj)
+        }
+
+
+        footer.append(requestLink);
+        fullCard.append(footer);
+        
         $("#requested_books").append(fullCard)
     }
+    }
+
+    function viewRequest() {
+      var selectedRequest = $(this).data("book");
+      window.location.href = "/view_request?request_id=" + selectedRequest.id;
+
     }
   
   

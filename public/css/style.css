@@ -7,6 +7,15 @@
 
 }
 
+.hero.is-primary .title {
+    color:black;
+}
+
+.hero.is-primary .subtitle {
+    color: black;
+}
+
+/* ********************************************************************* */
 #nav-bar {
     margin-bottom: 0; 
 }
@@ -135,7 +144,7 @@ a.button:hover {
 /* Card header font color and background color */
 .card-header-title {
     font-weight: bold;
-    color: rgba(255, 255, 255, 0.9);
+    color:black;
 }
 
 /* Dream card background color and spacing */

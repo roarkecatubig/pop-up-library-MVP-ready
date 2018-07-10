@@ -41,8 +41,12 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname, "../public/requested_books.html"))
     });
 
-    app.get("/offered/books", function (req, res) {
-        res.sendFile(path.join(__dirname, "../public/8_offered_books.html"))
+    app.get("/offered_books", function (req, res) {
+        res.sendFile(path.join(__dirname, "../public/offered_books.html"))
+    });
+
+    app.get("/view_request", function (req, res) {
+        res.sendFile(path.join(__dirname, "../public/view_request.html"))
     });
 
     // app.get("/community/requests/all", function (req, res) {

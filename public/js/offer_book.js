@@ -36,7 +36,8 @@ $(document).ready(function() {
                 publishedDate: results_list[i].publishedDate,
                 description: results_list[i].description,
                 author: results_list[i].authors[0],
-                thumbnail: results_list[i].thumbnail
+                thumbnail: results_list[i].thumbnail,
+                ISBN: results_list[i].industryIdentifiers[0].identifier
             }
             var fullCard = $("<div>");
             fullCard.addClass("card");
@@ -72,6 +73,10 @@ $(document).ready(function() {
             pubDate.addClass("subtitle is-6");
             pubDate.text(results_list[i].publishedDate)
 
+            var ISBN = $("<p>");
+            ISBN.addClass("subtitle is-6");
+            ISBN.text(results_list[i].industryIdentifiers[0].identifier)
+
             var author = $("<p>");
             author.addClass("subtitle is-6");
             author.text(results_list[i].authors[0]);
@@ -80,6 +85,7 @@ $(document).ready(function() {
 
             mediaContent.append(title);
             mediaContent.append(pubDate);
+            mediaContent.append(ISBN)
             mediaContent.append(author);
             mediaContent.append(divider);
 
@@ -115,9 +121,10 @@ $(document).ready(function() {
     function handleBookOffer() {
         var selectedBook = $(this).data("book");
         console.log(selectedBook)
-        $.post("/book/offer", selectedBook, function(result) {
+        $.post("/book/offered", selectedBook, function(result) {
             console.log(result)
             console.log("Request submitted")
+            window.location.href = "/home";
         })
     //   window.location.href = "/new-dream?dream_id=" + currentDream.id;
     }

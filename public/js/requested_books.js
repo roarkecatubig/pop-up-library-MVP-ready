@@ -1,80 +1,51 @@
 $(document).ready(function () {
+
+  $(document).on("click", ".card-footer-item", acknowledgeRequest);
   
   var book_requests;
 
-  // // Checks if logged in user has a set user name
-  // function validateUserName() {
-  //   $.get("/validate-user", function(data) {
-  //     console.log("User", data);
-  //     user = data;
-      
-  //     if (!user[0].userName) {
-  //       console.log("username needed");
-  //       renderModal();
-  //     }
-
-  //     else {
-  //       displayedUser = user[0].userName;
-  //       welcomeMessage.text("Welcome " + displayedUser)
-  //       getBookRequests()
-  //     }
-  //   })
-  // }
-
-  // // If no userName info was found for the logged in user, it will generate the modal
-  // function renderModal(new_user) {
-  //   $(".modal").addClass("is-active");  
-  // }
-
-  // // When the user clicks "Save User" on the modal, it will check to see if that user name is already being used
-  // function checkUsernames() {
-  //   var inputtedUser = inputUser.val().trim();
-  //   var inputtedZip = inputZip.val().trim();
-  //   console.log("Username input: " + inputtedUser);
-  //   var userString = "/" + inputtedUser;
-
-  //   $.get("/check-user" + userString, function(data) {
-  //     console.log(data);
-  //     if (data === null) {
-  //       updateUsername(inputtedUser, inputtedZip)
-  //     }
-
-  //     else {
-  //       nameHelpText.text("Sorry. That user exists. Please try again")
-  //       console.log("User exists. Try a different username")
-  //       renderModal();
-  //     }
-  //   })
-  // }
-
-  // function updateUsername(user_input, zip_input) {
-  //   displayedUser = user_input;
-  //   welcomeMessage.text("Welcome " + displayedUser);
-  //     $.ajax({
-  //       method: "PUT",
-  //       url: "/update-user/" + user_input + "/" + zip_input
-  //     })
-  //       .then(function() {
-  //         window.location.href = "/home";
-  //       });
-  // }
+  function getUserId() {
+    $.get("/validate-user", function (data) {
+      var id = data[0].id.toString();
+      console.log(id)
+      console.log("Type of user_id")
+      console.log(typeof id)
+      return id
+    })
+  }
 
   // This function grabs dreams from the database and updates the view
   function getBookRequests() {
-    $.get("/community/requests", function (data) {
+    $.get("/books/requested", function (data) {
       console.log("Book requests", data);
       book_requests = data;
       if (!book_requests || !book_requests.length) {
         displayEmpty();
       }
       else {
-        displayRequests(book_requests);
+        var user_id = getUserId()
+        console.log(book_requests)
+        displayRequests(book_requests, user_id);
       }
     });
   }
 
-  function displayRequests(results_list) {
+  function displayRequests(results_list, id) {
+
     for (i=0; i < results_list.length; i++) {
+      var requestUserId;
+      requestUserId = results_list[i].UserId.toString();
+      console.log(requestUserId)
+      console.log("Type of requestUserId")
+      console.log(typeof requestUserId)
+      console.log(requestUserId === id)
+
+      if (requestUserId === id) {
+        console.log("They are equivalent")
+        continue
+      }
+
+      else {
 
       var dataObj = {
         id: results_list[i].id,
@@ -83,7 +54,10 @@ $(document).ready(function () {
         publishedDate: results_list[i].publishedDate,
         description: results_list[i].description,
         author: results_list[i].author,
-        thumbnail: results_list[i].thumbnail
+        thumbnail: results_list[i].thumbnail,
+        username: results_list[i].User.userName,
+        zipcode: results_list[i].User.zipCode
+        
     }
 
       var fullCard = $("<div>");
@@ -116,19 +90,30 @@ $(document).ready(function () {
       title.addClass("title is-4");
       title.text(results_list[i].title);
 
-      var pubDate = $("<p>");
-      pubDate.addClass("subtitle is-6");
-      pubDate.text(results_list[i].publishedDate)
+      var requester = $("<p>");
+      requester.addClass("subtitle is-6");
+      requester.text("Requester: " + results_list[i].User.userName)
+
+      var zipCode = $("<p>");
+      zipCode.addClass("subtitle is-6");
+      zipCode.text("Zip Code: " + results_list[i].User.zipCode)
+
+      var ISBN = $("<p>");
+      ISBN.addClass("subtitle is-6");
+      ISBN.text("ISBN: " + results_list[i].ISBN)
 
       var author = $("<p>");
       author.addClass("subtitle is-6");
-      author.text(results_list[i].author);
+      author.text("Author: " + results_list[i].author);
 
       var divider = $("<hr>")
 
       mediaContent.append(title);
-      mediaContent.append(pubDate);
+      mediaContent.append(requester);
+      mediaContent.append(zipCode);
+      mediaContent.append(ISBN);
       mediaContent.append(author);
+      // mediaContent.append(bookDesc);
       mediaContent.append(divider);
 
       media.append(mediaLeft);
@@ -139,7 +124,7 @@ $(document).ready(function () {
       bookDesc.text(results_list[i].description);
 
       cardContent.append(media)
-      cardContent.append(bookDesc);
+      // cardContent.append(bookDesc);
 
       fullCard.append(cardContent);
 
@@ -149,9 +134,13 @@ $(document).ready(function () {
 
       var requestLink = $("<a>")
       // requestLink.attr("href", "/request");
-      requestLink.addClass("card-footer-item delete-book");
-      requestLink.text("Delete this Request");
+      requestLink.addClass("card-footer-item");
+      requestLink.text("Have this book? Click to offer book!");
       requestLink.data("book", dataObj)
+
+      if (results_list[i].UserId === id) {
+        requestLink.attr("title", "Disabled button")
+      }
 
       footer.append(requestLink);
       fullCard.append(footer);
@@ -159,17 +148,21 @@ $(document).ready(function () {
       $("#requested_books").append(fullCard)
   }
   }
+  }
 
 
   // This function does an API call to delete dreamss
-  function deleteRequest() {
+  function acknowledgeRequest() {
     var selectedBook = $(this).data("book");
     console.log(selectedBook)
     $.ajax({
-      method: "DELETE",
-      url: "/book/request/delete/" + selectedBook.id
+      method: "PUT",
+      url: "/book/request/update/" + selectedBook.id,
+      data: selectedBook
     })
-      .then(function () {
+      .then(function (data) {
+        console.log(data);
+        console.log("Update sent");
         getBookRequests();
       });
   }
