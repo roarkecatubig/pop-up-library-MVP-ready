@@ -2,15 +2,19 @@ $(document).ready(function () {
 
   $(document).on("click", ".card-footer-item", acknowledgeRequest);
   
+  var logged_in_user_id;
   var book_requests;
+
+  getUserId();
+  getBookRequests();
 
   function getUserId() {
     $.get("/validate-user", function (data) {
-      var id = data[0].id.toString();
-      console.log(id)
-      console.log("Type of user_id")
-      console.log(typeof id)
-      return id
+      logged_in_user_id = data[0].id;
+      console.log(logged_in_user_id)
+      // console.log(id)
+      // console.log("Type of user_id")
+      // console.log(typeof id)
     })
   }
 
@@ -20,27 +24,28 @@ $(document).ready(function () {
       console.log("Book requests", data);
       book_requests = data;
       if (!book_requests || !book_requests.length) {
-        displayEmpty();
+        // displayEmpty();
       }
       else {
-        var user_id = getUserId()
         console.log(book_requests)
-        displayRequests(book_requests, user_id);
+        displayRequests(book_requests);
       }
     });
   }
 
-  function displayRequests(results_list, id) {
+  function displayRequests(results_list) {
+    console.log(logged_in_user_id)
 
     for (i=0; i < results_list.length; i++) {
-      var requestUserId;
-      requestUserId = results_list[i].UserId.toString();
-      console.log(requestUserId)
-      console.log("Type of requestUserId")
-      console.log(typeof requestUserId)
-      console.log(requestUserId === id)
+      // var requestUserId;
+      console.log(results_list[i])
+      // requestUserId = results_list[i].UserId.toString();
+      // console.log(requestUserId)
+      // console.log("Type of requestUserId")
+      // console.log(typeof requestUserId)
+      // console.log(requestUserId === id)
 
-      if (requestUserId === id) {
+      if (results_list[i].UserId === logged_in_user_id) {
         console.log("They are equivalent")
         continue
       }
@@ -138,9 +143,9 @@ $(document).ready(function () {
       requestLink.text("Have this book? Click to offer book!");
       requestLink.data("book", dataObj)
 
-      if (results_list[i].UserId === id) {
-        requestLink.attr("title", "Disabled button")
-      }
+      // if (results_list[i].UserId === id) {
+      //   requestLink.attr("title", "Disabled button")
+      // }
 
       footer.append(requestLink);
       fullCard.append(footer);
@@ -171,7 +176,7 @@ $(document).ready(function () {
 
   // Getting the initial list of dreams
   // getDreams();
-  getBookRequests();
+  // getBookRequests();
 
   // **********************************************************************************************************************
 

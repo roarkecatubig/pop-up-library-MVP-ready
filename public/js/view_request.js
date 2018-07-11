@@ -6,6 +6,9 @@ $(document).ready(function() {
     var requestObject;
     var respondingUserObject;
     // var respondingUser;
+
+    // $(document).on("click", ".accept", deleteRequest);
+    // $(document).on("click", ".reject", viewRequest);
   
     if (url.indexOf("?request_id=") !== -1) {
       requestId = url.split("=")[1];
@@ -139,13 +142,13 @@ $(document).ready(function() {
       
             var acceptLink = $("<a>")
             // requestLink.attr("href", "/request");
-            acceptLink.addClass("card-footer-item");
+            acceptLink.addClass("card-footer-item accept");
             acceptLink.text("Accept Offer");
             acceptLink.data("book", dataObj)
 
             var declineLink = $("<a>")
             // requestLink.attr("href", "/request");
-            declineLink.addClass("card-footer-item");
+            declineLink.addClass("card-footer-item decline");
             declineLink.text("Decline Offer");
             declineLink.data("book", dataObj)
       
