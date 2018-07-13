@@ -6,106 +6,79 @@
     <title>Little Free Library</title>
     <script src="https://code.jquery.com/jquery.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"> -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
 
   <body>
-    <section class="hero is-primary is-medium" id="hero-photo-one">
-    <div class="hero-head">
-        <div class="columns is-mobile">
-            <div class="column">
-                <nav class="navbar" role="navigation" aria-label="main navigation">
-                    <div class="navbar-brand">
-                    <a class="navbar-item" href="https://bulma.io">
-                        <img src="./photos/logo_placeholder.png" alt="Suite Dreams Logo" width="112" height="28">
-                    </a>
+    <section class="hero is-medium" id="hero-photo-one">
+        <div class="hero-head">
+            <div class="columns is-mobile">
+                <div class="column">
+                    <nav class="navbar" role="navigation" aria-label="main navigation">
+                        <div class="navbar-brand">
+                            <a class="navbar-item" href="https://bulma.io">
+                                <img src="./photos/logo_placeholder.png" alt="Suite Dreams Logo" width="112" height="28">
+                            </a>
+                            </div>
+                            <div class="navbar-menu">
+                                <div class="navbar-end">
+                                    <a class="button is-primary is-inverted is-outlined" href="/logout">Log Out</a>
+                                </div>
+                            </div>
+                        </nav>
                     </div>
-                    <div class="navbar-menu">
-                        <div class="navbar-end">
-                            <a class="button is-primary is-inverted is-outlined" href="/logout">Log Out</a>
-                            <!-- <a id="signin" class="button is-link is-outlined" data-social-network="Google" data-social-action="google" data-social-target="http://localhost:4000" target="" href="/logout">
-                                <span class="icon">
-                                <i class="fab fa-google"></i>
-                                </span>
-                                <span>
-                                Log Out
-                            </span>
-                            </a> -->
-                        </div>
-                    </div>
-                </nav>
+                </div>
+            <div class="columns is-mobile">
+                <h1 class="title" id="welcome_message"></h1>
             </div>
-        </div>
-        <div class="columns is-mobile">
-            <h1 class="title" id="welcome_message"></h1>
-        </div>
-        <div class="columns is-mobile is-centered" id="nav-bar">
-            <div class="column" id="nav-tabs">
-                <div class="tabs">
-                    <ul>
-                        <li class="is-active"><a id="active-tab"href="/my-dream">Go Back</a></li>
-                        <li><a href="/social-feed">Your Profile</a></li>
-                        <li><a href="/insights">Community Library</a></li>
-                    </ul>
+            <div class="columns is-mobile is-centered" id="nav-bar">
+                <div class="column" id="nav-tabs">
+                    <div class="tabs">
+                        <ul>
+                            <li class="is-active"><a id="active-tab"href="/my-dream">Go Back</a></li>
+                            <li><a href="/social-feed">Your Profile</a></li>
+                            <li><a href="/insights">Community Library</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            
-        </div>
-    </div>
-    <div class="columns is-mobile is-centered">
-        <p class="title is-4">Your Book Requests</p>
         </div>
         <div class="columns is-mobile is-centered">
-
-        <p class="title is-6">Feel free to request up to 5 books at a time!</p>
-</div>
-    <!-- <div class="columns is-mobile is-centered">
-        <div class="field has-addons">
-            <div class="control">
-                <input class="input" type="text" placeholder="Find a book to request or offer">
-            </div>
-            <div class="control">
-                <a class="button is-info">
-                Search
-                </a>
-            </div>
+            <p class="title is-4">Your Book Requests</p>
         </div>
-    </div> -->
-    <div class="columns is-mobile is-centered">
-        <div class="card">
-            <div class="card-content">
-                <div class="media">
-                    <div class="media-left">
-                        <figure class="image is-96x96">
-                        <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-                        </figure>
+        <div class="columns is-mobile is-centered"></div>
+            <p class="title is-6">Feel free to request up to 5 books at a time!</p>
+        </div>
+        <div class="columns is-mobile is-centered">
+            <div class="card">
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-96x96">
+                            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p class="title is-4">Book Title</p>
+                            <hr>
+                            <p class="subtitle is-6" id="publish_date">Publish Date: </p>
+                            <p class="subtitle is-6" id="isbn">ISBN #: </p>
+                            <p class="subtitle is-6" id="lender_name">Lender: </p>
+                            <p class="subtitle is-6" id="zip_code">Zip code: </p>
+                        </div>
                     </div>
-                    <div class="media-content">
-                        <p class="title is-4">Book Title</p>
-                        <hr>
-                        <p class="subtitle is-6" id="publish_date">Publish Date: </p>
-                        <p class="subtitle is-6" id="isbn">ISBN #: </p>
-                        <p class="subtitle is-6" id="lender_name">Lender: </p>
-                        <p class="subtitle is-6" id="zip_code">Zip code: </p>
-                    </div>
+                    <div class="content" id="book_synopsis">Book synopsis.</div>
                 </div>
-                <div class="content" id="book_synopsis">Book synopsis.</div>
+                <footer class="card-footer">
+                    <a href="/request" class="card-footer-item">Remove this Book</a>
+                </footer>
             </div>
-            <footer class="card-footer">
-                <a href="/request" class="card-footer-item">Remove this Book</a>
-            </footer>
         </div>
-    </div>
-
-    </div>
-    <div class="hero-foot">
-    </div>
-</section>
+        <div class="hero-foot"></div>
+    </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
-    <script src="js/disclaimer.js" type="text/javascript"></script>
-        
+    <script src="js/disclaimer.js" type="text/javascript"></script>  
   </body>
 </html>

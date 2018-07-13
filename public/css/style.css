@@ -7,6 +7,10 @@
 
 }
 
+#submit_button {
+    margin-top: 10px;
+    margin-bottom: 10px;    
+}
 .hero.is-primary .title {
     color:black;
 }
@@ -21,6 +25,10 @@
 
 .hero.is-primary .subtitle {
     color: black;
+}
+
+.media {
+    min-width: 400px;
 }
 
 #index_form {
@@ -100,6 +108,9 @@
     margin-top: 1%;
     width: 80%;
     padding: 20px;
+    overflow-y: scroll;
+    overflow-x:hidden;
+    /* max-height: 500px; */
 }
 
 .card {
@@ -144,6 +155,10 @@ a:hover {
     margin-bottom: 1%;
     
 }
+
+/* #google_button {
+    margin-left: 38%;
+} */
 
 h2 {
     color: white;
