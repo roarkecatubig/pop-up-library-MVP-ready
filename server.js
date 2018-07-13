@@ -19,17 +19,17 @@ var keys = require('./config/keys.js');
 var app = express();
 var PORT = process.env.PORT || 8000;
 
-// Keeps app awake on Heroku
-var http = require("http");
-setInterval(function() {
-    http.get("http://stormy-fjord-21749.herokuapp.com/");
-}, 300000); // every 5 minutes (300000)
+// // Keeps app awake on Heroku
+// var http = require("http");
+// setInterval(function() {
+//     http.get("http://stormy-fjord-21749.herokuapp.com/");
+// }, 300000); // every 5 minutes (300000)
 
 // Passport set up
-app.use(cookieSession({
-  maxAge: 1800000,
-  keys: [keys.session.cookieKey]
-}));
+// app.use(cookieSession({
+//   maxAge: 1800000,
+//   keys: [keys.session.cookieKey]
+// }));
 
 
 app.use(passport.initialize());
